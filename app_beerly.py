@@ -1,6 +1,6 @@
 import os
 import streamlit as st
-from ocr import ocr_image
+#from ocr import ocr_image
 import cv2 as cv2
 import base64
 
@@ -8,7 +8,7 @@ if __name__ == '__main__':
     #main_bg = "../raw_data/img/beerly_wp.png"
     main_bg = "beerly_wp.png"
     main_bg_ext = "png"
- 
+
 
     st.set_page_config(page_title='Beerly', page_icon='🍻')
 
@@ -45,5 +45,5 @@ if __name__ == '__main__':
 
 
         if image_file != None:
-            st.write(ocr_image(image_file.name))
+            #st.write(ocr_image(image_file.name))
             aroma = st.slider('Aroma', min_value=0, max_value=1, value=1, step=0.1)
