@@ -1,11 +1,8 @@
-import os
-from numpy.lib.function_base import place
 import streamlit as st
 import base64
 import requests
 import numpy as np
 from PIL import Image
-import pickle
 import pandas as pd
 import json
 
@@ -13,10 +10,10 @@ if __name__ == '__main__':
     main_bg = "beerly_wp.png"
     main_bg_ext = "png"
 
-    # Nom de la page + icone
+    # Name of the page + icon
     st.set_page_config(page_title='Beerly', page_icon='🍻')
 
-    # Cacher le menu
+    # Hide left menu
     st.markdown("""
         <style>
             #MainMenu {visibility: hidden;}
@@ -35,33 +32,28 @@ if __name__ == '__main__':
         """,
                 unsafe_allow_html=True)
 
-    # identification de l'user
+    # CSS Parameters
+    st.markdown('<style>h1{color: blue;}</style>', unsafe_allow_html=True)
+    st.markdown('<style>h2{color: green;}</style>', unsafe_allow_html=True)
+    st.markdown('<style>p{text-align: justify;}</style>', unsafe_allow_html=True)
+
+    # user authentification
     placeholder = st.form('test', clear_on_submit=True)
     with placeholder:
         username = st.text_input('Username','99996')
-        password = st.text_input('Password')
+        password = st.text_input('Password', type = 'password')
         login = st.form_submit_button('Login')
 
-    # Si l'identification est successful
+    # If identification is successful
     if password == 'test' and username != None:
         # Select a file
-        st.write(f'# Hello {username}!')
-        img = st.file_uploader("Please upload a menu", type=['jpg', 'png', 'jpeg'])
+        st.write(f'# Hello {username} !')
+        st.write('## Please upload a menu')
+        img = st.file_uploader("\n", type=['jpg', 'png', 'jpeg'])
 
         if img != None:
 
             # Besoin de vérifier directement si l'image ressemble à un menu ou non
-
-            # convert image to np array
-            img = Image.open(img)
-            rgb_im = img.convert('RGB')
-            imgArray = np.array(rgb_im)
-
-            # encode into 1 dim uint8 string
-            img = imgArray.astype('uint8')
-            height, width, channel = img.shape
-            img_reshape = img.reshape(height*width*channel)
-            img_enc = base64.b64encode(img_reshape)
 
             # Sliders
             st.write('## Choose your parameters')
@@ -94,6 +86,17 @@ if __name__ == '__main__':
                     min_value=0.0,
                     max_value=1.0,
                     step=0.1)
+
+            # convert image to np array
+            img = Image.open(img)
+            rgb_im = img.convert('RGB')
+            imgArray = np.array(rgb_im)
+
+            # encode into 1 dim uint8 string
+            img = imgArray.astype('uint8')
+            height, width, channel = img.shape
+            img_reshape = img.reshape(height * width * channel)
+            img_enc = base64.b64encode(img_reshape)
 
             #Call API
             call_api = st.button('Go get me the best beer my little man !')
