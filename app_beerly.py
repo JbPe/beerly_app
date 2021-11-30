@@ -10,6 +10,9 @@ if __name__ == '__main__':
     main_bg = "beerly_wp.png"
     main_bg_ext = "png"
 
+    #test
+
+
     # Name of the page + icon
     st.set_page_config(page_title='Beerly', page_icon='🍻')
 
@@ -19,28 +22,29 @@ if __name__ == '__main__':
             #MainMenu {visibility: hidden;}
             footer {visibility: hidden;}
         </style>
-    """,
-                unsafe_allow_html=True)
+    """, unsafe_allow_html=True)
 
     # Set Background
     st.markdown(f"""
         <style>
             .reportview-container {{
-            background: url(data:image/{main_bg_ext};base64,{base64.b64encode(open(main_bg, "rb").read()).decode()})
+            background: url(data:image/{main_bg_ext};base64,{base64.b64encode(open(main_bg, "rb").read()).decode()});background-repeat: no-repeat
             }}
         </style>
         """,
                 unsafe_allow_html=True)
 
     # CSS Parameters
-    st.markdown('<style>h1{color: blue;}</style>', unsafe_allow_html=True)
-    st.markdown('<style>h2{color: green;}</style>', unsafe_allow_html=True)
+    st.markdown(
+        '<style>h1{text-shadow:0 1px 0 #ccc, 0 2px 0 #c9c9c9, 0 3px 0 #bbb, 0 4px 0 #b9b9b9, 0 5px 0 #aaa, 0 6px 1px rgba(0,0,0,.1), 0 0 5px rgba(0,0,0,.1), 0 1px 3px rgba(0,0,0,.3), 0 3px 5px rgba(0,0,0,.2), 0 5px 10px rgba(0,0,0,.25), 0 10px 10px rgba(0,0,0,.2), 0 20px 20px rgba(0,0,0,.15);color:#000000;}</style>',
+        unsafe_allow_html=True)
+    st.markdown('<style>h2{text-shadow:0 0 20px #00FFFC,2px 3px 3px #141414, 0 0 100px #00D4D1;color:#00FFFC}</style>',unsafe_allow_html=True)
     st.markdown('<style>p{text-align: justify;}</style>', unsafe_allow_html=True)
 
     # user authentification
     placeholder = st.form('test', clear_on_submit=True)
     with placeholder:
-        username = st.text_input('Username','99996')
+        username = st.text_input('Username','89000')
         password = st.text_input('Password', type = 'password')
         login = st.form_submit_button('Login')
 
@@ -147,7 +151,5 @@ if __name__ == '__main__':
 
                 # best_beer_name
                 # best_beer_rating
-
-                col1, col2 = st.columns(2)
-                col1.metric("Beer", contenu[0]["title"])
-                col2.metric("Estimated Rating", contenu[0]["id"])
+                contenu[0]["title"]
+                contenu[0]["id"]
