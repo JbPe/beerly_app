@@ -48,7 +48,7 @@ if __name__ == '__main__':
         password = st.text_input('Password', type = 'password')
         login = st.form_submit_button('Login')
 
-    # If identification is successful
+    # If authentification is successful
     if password == 'test' and username != None:
         # Select a file
         st.write(f'# Hello {username} !')
@@ -57,7 +57,7 @@ if __name__ == '__main__':
 
         if img != None:
 
-            # Besoin de vérifier directement si l'image ressemble à un menu ou non
+            # Need to check if the image looks like a menu before calling the api
 
             # Sliders
             st.write('## Choose your parameters')
@@ -105,7 +105,7 @@ if __name__ == '__main__':
             #Call API
             call_api = st.button('Go get me the best beer my little man !')
 
-            #appeler l'API avec image_file + aroma + appearance + palate + taste + username
+            #call the API with image_file + aroma + appearance + palate + taste + username
             if call_api:
 
                 # request to be sent to the api
@@ -122,10 +122,10 @@ if __name__ == '__main__':
                     'palate': palate,
                     'aroma': aroma,
                     'overall': 1,
-                    'content': 1
+                    'content': 5
                 }
 
-                # requête et décodage
+                # request & decoding
                 #req = requests.post('http://127.0.0.1:8000/predict',json.dumps(request_dict), headers = headers)
 
                 #st.write(req)
@@ -133,23 +133,22 @@ if __name__ == '__main__':
 
                 url = "http://my-json-server.typicode.com/rtavenar/fake_api/tasks"
 
-                # return un DataFramede X bières
+                # return a dataframe of X beers
+
+                #
                 reponse = requests.get(url, params="userId=3")
                 contenu = reponse.json()
                 dataframe = st.dataframe(contenu)
 
-                # Contenu de la réponse JSON
+                # JSON Content
                 # st.write(type(contenu))
                 # st.write(contenu)
 
-                # 1ère ligne de la réponse JSON
+                # 1st row of the JSON content
                 # st.write(contenu[0]["title"])
                 # st.write(contenu[0]["id"])
 
-                # sélectionner la meilleure bière
+                # Selecting the best beer
 
-
-                # best_beer_name
-                # best_beer_rating
                 contenu[0]["title"]
                 contenu[0]["id"]
