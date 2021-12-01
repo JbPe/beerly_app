@@ -1,3 +1,4 @@
+from numpy.lib.function_base import place
 import streamlit as st
 import base64
 import requests
@@ -44,10 +45,13 @@ if __name__ == '__main__':
     st.markdown(
         '<style>p{text-align: justify;font-family: "Palatino", sans-serif; font-size: 16px; line-height: 24px; margin: 0 0 24px;}</style>',
         unsafe_allow_html=True)
+    st.markdown(
+        '<style>h3{font-family: "Impact" ;font-size: 30px; letter-spacing: -1px; text-transform: uppercase; text-shadow: 1px 1px 0 #000, margin: 10px 0 24px; text-align: center; line-height: 50px;}</style>',
+        unsafe_allow_html=True)
 
     # user authentification
-    placeholder = st.form('test', clear_on_submit=True)
-    with placeholder:
+    placeholder = st.empty()
+    with placeholder.form('test', clear_on_submit=True):
         username = st.text_input('Username','Cadiz')
         password = st.text_input('Password', type = 'password')
         col1, col2, col3 , col4, col5 = st.columns(5)
@@ -64,13 +68,13 @@ if __name__ == '__main__':
 
     # If authentification is successful
     if password == 'test' and username != None:
+        placeholder.empty()
         # Select a file
-        st.write(f'# Hello {username} !')
+        greetings = st.write(f'# Hello {username} !')
         st.write('## Please upload a menu')
         img = st.file_uploader("\n", type=['jpg', 'png', 'jpeg'])
 
         if img != None:
-
             # Need to check if the image looks like a menu before calling the api
 
             # Sliders
@@ -162,9 +166,9 @@ if __name__ == '__main__':
 
                 #
                 response = requests.get(url, params="userId=3")
-                content = response.json()
+                content_response = response.json()
 
-                content = pd.DataFrame(content)
+                content = pd.DataFrame(content_response)
 
                 st.table(
                     content.style.highlight_max(
@@ -180,5 +184,6 @@ if __name__ == '__main__':
 
                 # Selecting the best beer
 
-                #contenu[0]["title"]
+                st.write("## The beer we've chosen for you is :")
+                st.write(f'### {content_response[0]["title"]}')
                 #contenu[0]["id"]
