@@ -36,17 +36,31 @@ if __name__ == '__main__':
 
     # CSS Parameters
     st.markdown(
-        '<style>h1{text-shadow:0 1px 0 #ccc, 0 2px 0 #c9c9c9, 0 3px 0 #bbb, 0 4px 0 #b9b9b9, 0 5px 0 #aaa, 0 6px 1px rgba(0,0,0,.1), 0 0 5px rgba(0,0,0,.1), 0 1px 3px rgba(0,0,0,.3), 0 3px 5px rgba(0,0,0,.2), 0 5px 10px rgba(0,0,0,.25), 0 10px 10px rgba(0,0,0,.2), 0 20px 20px rgba(0,0,0,.15);color:#000000;}</style>',
+        '<style>h1{ font-family: "American Typewriter", cursive; font-size: 50px; line-height: 60px; margin: 10px 0 20px; text-transform: uppercase; text-shadow: 2px 2px 0 #000, margin: 10px 0 24px; text-align: center; }</style>',
         unsafe_allow_html=True)
-    st.markdown('<style>h2{text-shadow:0 0 20px #00FFFC,2px 3px 3px #141414, 0 0 100px #00D4D1;color:#00FFFC}</style>',unsafe_allow_html=True)
-    st.markdown('<style>p{text-align: justify;}</style>', unsafe_allow_html=True)
+    st.markdown(
+        '<style>h2{font-family: "Palatino" ;font-size: 30px; letter-spacing: -1px; text-transform: uppercase; text-shadow: 1px 1px 0 #000, margin: 10px 0 24px; text-align: center; line-height: 50px;}</style>',
+        unsafe_allow_html=True)
+    st.markdown(
+        '<style>p{text-align: justify;font-family: "Palatino", sans-serif; font-size: 16px; line-height: 24px; margin: 0 0 24px;}</style>',
+        unsafe_allow_html=True)
 
     # user authentification
     placeholder = st.form('test', clear_on_submit=True)
     with placeholder:
-        username = st.text_input('Username','89000')
+        username = st.text_input('Username','Cadiz')
         password = st.text_input('Password', type = 'password')
-        login = st.form_submit_button('Login')
+        col1, col2, col3 , col4, col5 = st.columns(5)
+        with col1:
+            pass
+        with col2:
+            pass
+        with col4:
+            pass
+        with col5:
+            pass
+        with col3 :
+            login = st.form_submit_button('Login')
 
     # If authentification is successful
     if password == 'test' and username != None:
@@ -103,7 +117,18 @@ if __name__ == '__main__':
             img_enc = base64.b64encode(img_reshape)
 
             #Call API
-            call_api = st.button('Go get me the best beer my little man !')
+            col1, col2, col3 , col4, col5 = st.columns(5)
+            with col1:
+                pass
+            with col2:
+                pass
+            with col4:
+                pass
+            with col5:
+                pass
+            with col3 :
+                call_api = st.button('Get me my beer !')
+
 
             #call the API with image_file + aroma + appearance + palate + taste + username
             if call_api:
@@ -136,9 +161,14 @@ if __name__ == '__main__':
                 # return a dataframe of X beers
 
                 #
-                reponse = requests.get(url, params="userId=3")
-                contenu = reponse.json()
-                dataframe = st.dataframe(contenu)
+                response = requests.get(url, params="userId=3")
+                content = response.json()
+
+                content = pd.DataFrame(content)
+
+                st.table(
+                    content.style.highlight_max(
+                        props='font-weight:bold;color:#FFFF00'))
 
                 # JSON Content
                 # st.write(type(contenu))
@@ -150,5 +180,5 @@ if __name__ == '__main__':
 
                 # Selecting the best beer
 
-                contenu[0]["title"]
-                contenu[0]["id"]
+                #contenu[0]["title"]
+                #contenu[0]["id"]
