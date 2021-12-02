@@ -198,7 +198,7 @@ if __name__ == '__main__':
                 key = 'AIzaSyDjJVJjmV8lPJ2_c6JjoryC9VXmP3wUNQY'
 
                 # text to search :
-                q = beer_list[0]
+                q = beer_list[0] + ' bière'
 
                 req = requests.get(f'{endpoint}?key={key}&cx={cx}&q={q}&searchType=image&imgSize=medium&alt=json&num=1&start=1')
 
