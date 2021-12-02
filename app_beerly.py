@@ -94,13 +94,14 @@ if __name__ == '__main__':
         #removing the authentification
         placeholder.empty()
 
+
+        placeholder = st.empty()
         # Select a file
-        st.write('## Please upload a menu')
-        img = st.file_uploader("", type=['jpg', 'png', 'jpeg'])
+        img = placeholder.file_uploader("Please upload a menu", type=['jpg', 'png', 'jpeg'])
 
         if img != None:
 
-            # Need to check if the image looks like a menu before calling the api
+            placeholder.empty()
 
             # Sliders
             with st.expander("Advanced parameters"):
@@ -154,6 +155,8 @@ if __name__ == '__main__':
                 pass
             with col2 :
                 call_api = st.button('Get me my beer !')
+
+            img_placeholder = st.image(img)
 
             #call the API with image_file + aroma + appearance + palate + taste + username
             if call_api:
@@ -224,3 +227,5 @@ if __name__ == '__main__':
                     )
                     for i in range(1,len(beer_list)):
                         st.write(f'{i+1} - {beer_list[i]}')
+
+                img_placeholder.empty()
