@@ -41,7 +41,7 @@ if __name__ == '__main__':
     st.markdown(f"""
         <style>
             .reportview-container {{
-            background: url(data:image/{main_bg_ext};base64,{base64.b64encode(open(main_bg, "rb").read()).decode()});background-repeat: no-repeat; background-size:auto
+            background: url(data:image/{main_bg_ext};base64,{base64.b64encode(open(main_bg, "rb").read()).decode()});background-repeat: no-repeat; background-size:cover
             }}
         </style>
         """, unsafe_allow_html=True)
