@@ -91,7 +91,6 @@ if __name__ == '__main__':
         placeholder.empty()
 
         # Select a file
-        st.write(f'# Hello {username} !')
         st.write('## Please upload a menu')
         img = st.file_uploader("", type=['jpg', 'png', 'jpeg'])
 
@@ -191,20 +190,20 @@ if __name__ == '__main__':
                         beer_list.append(i)
 
 
-                st.write(f'## You should try {beer_list[0]}!')
+                st.write(f'### You should try {beer_list[0]}!')
 
                 if len(beer_list) > 5:
                     st.write(
                         "Don't want this beer ? Look at the other beers in the top 5"
                     )
                     for i in range(1,5):
-                        st.write(beer_list[i])
+                        st.write(f'{i+1} - {beer_list[i]}')
                 else:
                     st.write(
                         "Don't want this beer ? Look at the other beers in the menu"
                     )
                     for i in range(1,len(beer_list)):
-                        st.write(beer_list[i])
+                        st.write(f'{i+1} - {beer_list[i]}')
 
 
                 #don't want this beer ? here is the top 5 of the menu for you
