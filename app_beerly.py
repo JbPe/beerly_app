@@ -73,7 +73,7 @@ if __name__ == '__main__':
     # user authentification
     placeholder = st.empty()
     with placeholder.form('test', clear_on_submit=True):
-        username = st.text_input('Username','89000')
+        username = st.text_input('Username','Thomas')
         password = st.text_input('Password', type = 'password')
         # centered button
         col1, col2, col3 , col4, col5 = st.columns(5)
@@ -166,7 +166,7 @@ if __name__ == '__main__':
                 headers['Content-Type'] = 'application/json'
                 request_dict = {
                     'image': img_enc.decode('utf8').replace("'", '"'),
-                    'user': username,
+                    'user': '89000',
                     'height': height,
                     'width': width,
                     'channel': channel,
