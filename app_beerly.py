@@ -198,7 +198,7 @@ if __name__ == '__main__':
                 st.write(f'### You should try the {beer_list[0]} !')
                 cx='58d6365333e732894'
                 endpoint = 'https://www.googleapis.com/customsearch/v1'
-                key = 'key'
+                key = st.secrets["GOOGLE_API_KEY"]
 
                 # text to search :
                 q = beer_list[0] + ' bière'
