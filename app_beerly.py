@@ -17,13 +17,16 @@ if __name__ == '__main__':
 
     #padding
     padding = 0
+    max_width = 600
     st.markdown(f""" <style>
     .reportview-container .main .block-container{{
+        max-width: {max_width}px;
         padding-top: {padding}rem;
         padding-right: {padding}rem;
         padding-left: {padding}rem;
         padding-bottom: {padding}rem;
-    }} </style> """, unsafe_allow_html=True)
+    }} </style> """,
+                unsafe_allow_html=True)
 
 
     # Hide left menu
@@ -47,15 +50,15 @@ if __name__ == '__main__':
 
     # H1
     st.markdown(
-        '<style>h1{ font-family: "Luminari, fantasy"; font-size: 40px; line-height: 60px; margin: 10px 0 20px; text-align: center;text-transform: uppercase; }</style>',
+        '<style>h1 { color: #333333; font-family: "Bitter", serif; font-size: 50px; font-weight: normal; line-height: 54px; margin: 0 0 54px; }</style>',
         unsafe_allow_html=True)
     # H2
     st.markdown(
-        '<style>h2{font-family: "Luminari, fantasy" ;font-size: 30px; letter-spacing: -1px; text-shadow: 1px 1px 0 #000, margin: 10px 0 24px; line-height: 50px;}</style>',
+        '<style>{color: #333333; font-family: Georgia, serif;font-size: 26px; line-height: 36px; margin: 0 0 28px; }</style>',
         unsafe_allow_html=True)
     # P
     st.markdown(
-        '<style>p{text-align: justify;font-family: "Luminari, fantasy", sans-serif; font-size: 15px; line-height: 24px; margin: 0 0 24px;}</style>',
+        '<style>p { color: #333333; font-family: Georgia, serif; font-size: 18px; line-height: 28px; margin: 0 0 28px; }</style>',
         unsafe_allow_html=True)
     # H3
     st.markdown(
@@ -174,7 +177,7 @@ if __name__ == '__main__':
 
                 # request & decoding
                 req = requests.post(
-                    'https://beerly0-kui5hxyjoa-ew.a.run.app/predict',
+                    'https://beerlyv0-yc55p5eduq-ew.a.run.app/predict',
                     json.dumps(request_dict),
                     headers=headers)
 
@@ -189,7 +192,25 @@ if __name__ == '__main__':
                         beer_list.append(i)
 
 
-                st.write(f'### You should try {beer_list[0]} !')
+                st.write(f'### You should try the {beer_list[0]} !')
+                cx='58d6365333e732894'
+                endpoint = 'https://www.googleapis.com/customsearch/v1'
+                key = 'AIzaSyDjJVJjmV8lPJ2_c6JjoryC9VXmP3wUNQY'
+
+                # text to search :
+                q = beer_list[0]
+
+                req = requests.get(f'{endpoint}?key={key}&cx={cx}&q={q}&searchType=image&imgSize=medium&alt=json&num=1&start=1')
+
+                d= json.loads(req.content)
+                link = d['items'][0]['link']
+                col1, col2, col3 = st.columns(3)
+                with col1:
+                    pass
+                with col3:
+                    pass
+                with col2 :
+                    st.image(link)
 
                 if len(beer_list) > 5:
                     st.write(
@@ -203,24 +224,3 @@ if __name__ == '__main__':
                     )
                     for i in range(1,len(beer_list)):
                         st.write(f'{i+1} - {beer_list[i]}')
-
-
-                #don't want this beer ? here is the top 5 of the menu for you
-
-                # content = pd.DataFrame(content_response)
-
-                # st.write(f'## You should try {content_response[0]["title"]}')
-
-                # st.write(
-                #     '#### Here are the other beers of your menu ranked according to your taste :'
-                # )
-                # st.table(content)
-                #content.style.highlight_max(props='font-weight:bold;color:#FFFF00'))
-
-                # JSON Content
-                # st.write(type(contenu))
-                # st.write(contenu)
-
-                # 1st row of the JSON content
-                # st.write(contenu[0]["title"])
-                # st.write(contenu[0]["id"])
