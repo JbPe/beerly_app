@@ -89,7 +89,7 @@ if __name__ == '__main__':
             pass
 
     # If authentification is successful
-    if password == 'test' and username != None:
+    if password == 'beerly' and username != None:
 
         #removing the authentification
         placeholder.empty()
