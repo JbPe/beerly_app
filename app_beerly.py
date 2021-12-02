@@ -198,12 +198,12 @@ if __name__ == '__main__':
                 st.write(f'### You should try the {beer_list[0]} !')
                 cx='58d6365333e732894'
                 endpoint = 'https://www.googleapis.com/customsearch/v1'
-                key = 'AIzaSyDjJVJjmV8lPJ2_c6JjoryC9VXmP3wUNQY'
+                key = 'key'
 
                 # text to search :
                 q = beer_list[0] + ' bière'
 
-                req = requests.get(f'{endpoint}?key={key}&cx={cx}&q={q}&searchType=image&imgSize=medium&alt=json&num=1&start=1')
+                req = requests.get(f'{endpoint}?key={key}&cx={cx}&q={q}&searchType=image&imgSize=large&alt=json&num=1&start=1')
 
                 d= json.loads(req.content)
                 link = d['items'][0]['link']
