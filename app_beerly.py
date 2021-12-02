@@ -1,4 +1,3 @@
-from numpy.lib.function_base import place
 import streamlit as st
 import base64
 import requests
@@ -15,7 +14,7 @@ if __name__ == '__main__':
     st.set_page_config(page_title='Beerly', page_icon='🍻')
 
 
-    #test padding
+    #padding
     padding = 0
     st.markdown(f""" <style>
     .reportview-container .main .block-container{{
@@ -47,23 +46,23 @@ if __name__ == '__main__':
 
     # H1
     st.markdown(
-        '<style>h1{ font-family: "Palatino"; font-size: 40px; line-height: 60px; margin: 10px 0 20px; text-align: center;text-transform: uppercase; }</style>',
+        '<style>h1{ font-family: "Luminari"; font-size: 40px; line-height: 60px; margin: 10px 0 20px; text-align: center;text-transform: uppercase; }</style>',
         unsafe_allow_html=True)
     # H2
     st.markdown(
-        '<style>h2{font-family: "Palatino" ;font-size: 30px; letter-spacing: -1px; text-shadow: 1px 1px 0 #000, margin: 10px 0 24px; line-height: 50px;}</style>',
+        '<style>h2{font-family: "Luminari" ;font-size: 30px; letter-spacing: -1px; text-shadow: 1px 1px 0 #000, margin: 10px 0 24px; line-height: 50px;}</style>',
         unsafe_allow_html=True)
     # P
     st.markdown(
-        '<style>p{text-align: justify;font-family: "Palatino", sans-serif; font-size: 15px; line-height: 24px; margin: 0 0 24px;}</style>',
+        '<style>p{text-align: justify;font-family: "Luminari", sans-serif; font-size: 15px; line-height: 24px; margin: 0 0 24px;}</style>',
         unsafe_allow_html=True)
     # H3
     st.markdown(
-        '<style>h3{font-family: "Bookman" ;font-size: 25px; letter-spacing: -1px; text-shadow: 1px 1px 0 #000, margin: 10px 0 24px; text-align: center; line-height: 50px;}</style>',
+        '<style>h3{font-family: "Luminari" ;font-size: 25px; letter-spacing: -1px; text-shadow: 1px 1px 0 #000, margin: 10px 0 24px; text-align: center; line-height: 50px;}</style>',
         unsafe_allow_html=True)
     # H4
     st.markdown(
-        '<style>h4{font-family: "Bookman" ;font-size: 20px; letter-spacing: -1px; text-shadow: 1px 1px 0 #000, margin: 10px 0 24px; text-align: center; line-height: 50px;}</style>',
+        '<style>h4{font-family: "Luminari" ;font-size: 20px; letter-spacing: -1px; text-shadow: 1px 1px 0 #000, margin: 10px 0 24px; text-align: center; line-height: 50px;}</style>',
         unsafe_allow_html=True)
 
     # user authentification
@@ -95,8 +94,6 @@ if __name__ == '__main__':
         img = st.file_uploader("", type=['jpg', 'png', 'jpeg'])
 
         if img != None:
-
-            img.read()
 
             # Need to check if the image looks like a menu before calling the api
 
@@ -190,7 +187,7 @@ if __name__ == '__main__':
                         beer_list.append(i)
 
 
-                st.write(f'### You should try {beer_list[0]}!')
+                st.write(f'### You should try {beer_list[0]} !')
 
                 if len(beer_list) > 5:
                     st.write(
