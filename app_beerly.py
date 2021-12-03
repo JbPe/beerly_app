@@ -190,14 +190,14 @@ if __name__ == '__main__':
                     'taste': taste / 50,
                     'appearance': appearance / 50,
                     'palate': palate / 50,
-                    'aroma': aroma / 10,
+                    'aroma': aroma / 50,
                     'overall': 1,
                     'content': 5
                 }
 
                 # request & decoding
                 req = requests.post(
-                    'https://beerlyv0-yc55p5eduq-ew.a.run.app/predict',
+                    'https://beerly0-kui5hxyjoa-ew.a.run.app/predict',
                     json.dumps(request_dict),
                     headers=headers)
                 print(req)
