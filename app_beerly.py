@@ -231,7 +231,7 @@ if __name__ == '__main__':
 
                 if len(beer_list) > 5:
                     st.write(
-                        "###Don't want this beer ? Look at the other beers in the top 5"
+                        "### Don't want this beer ? Look at the other beers in the top 5"
                     )
                     for i in range(1,5):
                         st.write(f'### {i+1} - {beer_list[i]}')
