@@ -142,14 +142,17 @@ if __name__ == '__main__':
             imgArray = np.array(rgb_im)
 
             #Call API
-            col1, col2, col3 = st.columns(3)
+            col1, col2, col3 = st.columns(5)
             with col1:
                 pass
-            with col3:
+            with col2:
                 pass
-            with col2 :
-                call_api = st.button('Get me my beer !')
-
+            with col3 :
+                call_api = st.button('I want my beer !')
+            with col4:
+                pass
+            with col5:
+                pass
             img_placeholder = st.image(img)
 
             # encode into 1 dim uint8 string
@@ -184,9 +187,9 @@ if __name__ == '__main__':
                     'height': height,
                     'width': width,
                     'channel': channel,
-                    'taste': taste / 10,
-                    'appearance': appearance / 10,
-                    'palate': palate / 10,
+                    'taste': taste / 50,
+                    'appearance': appearance / 50,
+                    'palate': palate / 50,
                     'aroma': aroma / 10,
                     'overall': 1,
                     'content': 5
