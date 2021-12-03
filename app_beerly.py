@@ -6,6 +6,7 @@ import numpy as np
 from PIL import Image
 import pandas as pd
 import json
+import cv2
 
 if __name__ == '__main__':
     main_bg = "beerly_wp.png"
@@ -139,13 +140,7 @@ if __name__ == '__main__':
             # convert image to np array
             img = Image.open(img)
             rgb_im = img.convert('RGB')
-            imgArray = np.array(rgb_im)
 
-            # encode into 1 dim uint8 string
-            img = imgArray.astype('uint8')
-            height, width, channel = img.shape
-            img_reshape = img.reshape(height * width * channel)
-            img_enc = base64.b64encode(img_reshape)
 
             #Call API
             col1, col2, col3 = st.columns(3)
@@ -158,6 +153,23 @@ if __name__ == '__main__':
 
             img_placeholder = st.image(img)
 
+            imgArray = np.array(rgb_im)
+            height, width, channel = imgArray.shape
+            ratio = width / height
+            new_height = 600
+            new_width = int(new_height * ratio)
+            #img_resize = rgb_im.resize((new_width, new_height))
+            img_resize = cv2.resize(imgArray, (new_width,new_height))
+            imgArray = np.array(img_resize)
+            print(imgArray.shape)
+            img_reshape = imgArray.reshape(new_height * new_width * channel)
+            # encode into 1 dim uint8 string
+            img_reshape = img_reshape.astype('uint8')
+
+            img_enc = base64.b64encode(img_reshape)
+
+            st.image(Image.fromarray(img_resize))
+
             #call the API with image_file + aroma + appearance + palate + taste + username
             if call_api:
 
@@ -167,13 +179,13 @@ if __name__ == '__main__':
                 request_dict = {
                     'image': img_enc.decode('utf8').replace("'", '"'),
                     'user': '89000',
-                    'height': height,
-                    'width': width,
+                    'height': new_height,
+                    'width': new_width,
                     'channel': channel,
-                    'taste': taste/50,
-                    'appearance': appearance/50,
-                    'palate': palate/50,
-                    'aroma': aroma/50,
+                    'taste': taste / 50,
+                    'appearance': appearance / 50,
+                    'palate': palate / 50,
+                    'aroma': aroma / 50,
                     'overall': 1,
                     'content': 5
                 }
@@ -183,7 +195,7 @@ if __name__ == '__main__':
                     'https://beerlyv0-yc55p5eduq-ew.a.run.app/predict',
                     json.dumps(request_dict),
                     headers=headers)
-
+                print(req)
                 content_response = req.json()
 
                 content_response = eval(content_response)
@@ -205,7 +217,7 @@ if __name__ == '__main__':
 
                 req = requests.get(f'{endpoint}?key={key}&cx={cx}&q={q}&searchType=image&imgSize=large&alt=json&num=1&start=1')
 
-                d= json.loads(req.content)
+                d = json.loads(req.content)
                 link = d['items'][0]['link']
                 col1, col2, col3 = st.columns(3)
                 with col1:
