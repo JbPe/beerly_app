@@ -50,23 +50,23 @@ if __name__ == '__main__':
 
     # H1
     st.markdown(
-        '<style>h1 { color: #333333; font-family: "Bitter", serif; font-size: 50px; font-weight: normal; line-height: 54px; margin: 0 0 54px; }</style>',
+        '<style>h1 { color: #333333; font-family: "Tahoma", serif; font-size: 50px; font-weight: normal; line-height: 54px; margin: 0 0 54px; }</style>',
         unsafe_allow_html=True)
     # H2
     st.markdown(
-        '<style>{color: #333333; font-family: Georgia, serif;font-size: 26px; line-height: 36px; margin: 0 0 28px; }</style>',
+        '<style>h2 {color: #333333; font-family: "Tahoma", serif;font-size: 26px; line-height: 36px; margin: 0 0 28px; }</style>',
         unsafe_allow_html=True)
     # P
     st.markdown(
-        '<style>p { color: #333333; font-family: Georgia, serif; font-size: 18px; line-height: 28px; margin: 0 0 28px; }</style>',
+        '<style>p { color: #333333; font-family: "Tahoma", serif; font-size: 18px; line-height: 28px; margin: 0 0 28px; }</style>',
         unsafe_allow_html=True)
     # H3
     st.markdown(
-        '<style>h3{font-family: "Luminari, fantasy" ;font-size: 25px; letter-spacing: -1px; text-shadow: 1px 1px 0 #000, margin: 10px 0 24px; text-align: center; line-height: 50px;}</style>',
+        '<style>h3{font-family: "Tahoma" ;font-size: 25px; letter-spacing: -1px; text-shadow: 1px 1px 0 #000, margin: 10px 0 24px; text-align: center; line-height: 50px;}</style>',
         unsafe_allow_html=True)
     # H4
     st.markdown(
-        '<style>h4{font-family: "Luminari, fantasy" ;font-size: 20px; letter-spacing: -1px; text-shadow: 1px 1px 0 #000, margin: 10px 0 24px; text-align: center; line-height: 50px;}</style>',
+        '<style>h4{font-family: "Tahoma" ;font-size: 20px; letter-spacing: -1px; text-shadow: 1px 1px 0 #000, margin: 10px 0 24px; text-align: center; line-height: 50px;}</style>',
         unsafe_allow_html=True)
 
 
@@ -237,7 +237,7 @@ if __name__ == '__main__':
                         st.write(f'### {i+1} - {beer_list[i]}')
                 else:
                     st.write(
-                        "###Don't want this beer ? Look at the other beers in the menu"
+                        "### Don't want this beer ? Look at the other beers in the menu"
                     )
                     for i in range(1,len(beer_list)):
                         st.write(f'### {i+1} - {beer_list[i]}')
