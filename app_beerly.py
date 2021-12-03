@@ -184,10 +184,10 @@ if __name__ == '__main__':
                     'height': height,
                     'width': width,
                     'channel': channel,
-                    'taste': taste / 50,
-                    'appearance': appearance / 50,
-                    'palate': palate / 50,
-                    'aroma': aroma / 50,
+                    'taste': taste / 10,
+                    'appearance': appearance / 10,
+                    'palate': palate / 10,
+                    'aroma': aroma / 10,
                     'overall': 1,
                     'content': 5
                 }
@@ -231,13 +231,13 @@ if __name__ == '__main__':
 
                 if len(beer_list) > 5:
                     st.write(
-                        "### Don't want this beer ? Look at the other beers in the top 5"
+                        "### Don't want this beer ? Look at the other beers in the top 5 !"
                     )
                     for i in range(1,5):
                         st.write(f'### {i+1} - {beer_list[i]}')
                 else:
                     st.write(
-                        "### Don't want this beer ? Look at the other beers in the menu"
+                        "### Don't want this beer ? Look at the other beers in the menu !"
                     )
                     for i in range(1,len(beer_list)):
                         st.write(f'### {i+1} - {beer_list[i]}')
