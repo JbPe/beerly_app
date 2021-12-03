@@ -6,7 +6,6 @@ import numpy as np
 from PIL import Image
 import pandas as pd
 import json
-#import cv2
 
 if __name__ == '__main__':
     main_bg = "beerly_wp.png"
@@ -232,15 +231,15 @@ if __name__ == '__main__':
 
                 if len(beer_list) > 5:
                     st.write(
-                        "Don't want this beer ? Look at the other beers in the top 5"
+                        "###Don't want this beer ? Look at the other beers in the top 5"
                     )
                     for i in range(1,5):
-                        st.write(f'{i+1} - {beer_list[i]}')
+                        st.write(f'### {i+1} - {beer_list[i]}')
                 else:
                     st.write(
-                        "Don't want this beer ? Look at the other beers in the menu"
+                        "###Don't want this beer ? Look at the other beers in the menu"
                     )
                     for i in range(1,len(beer_list)):
-                        st.write(f'{i+1} - {beer_list[i]}')
+                        st.write(f'### {i+1} - {beer_list[i]}')
 
                 img_placeholder.empty()
