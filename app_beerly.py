@@ -142,7 +142,7 @@ if __name__ == '__main__':
             imgArray = np.array(rgb_im)
 
             #Call API
-            col1, col2, col3 = st.columns(5)
+            col1, col2, col3, col4, col5 = st.columns(5)
             with col1:
                 pass
             with col2:
